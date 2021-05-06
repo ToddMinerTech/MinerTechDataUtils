@@ -11,7 +11,7 @@ namespace ToddMinerTech\DataUtils;
  *
  * @package ToddMinerTech\apptivo-php-mt
  */
-class DataUtils
+class JsonUtil
 {
     /**
      * safeJsonEncode
@@ -23,7 +23,7 @@ class DataUtils
      *
      * @return string Returns json string
      */
-    public static function safeJsonEncode($value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): string
+    public static function safeEncode($value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): string
     {
         $encoded = json_encode($value, $options, $depth);
         switch (json_last_error())
@@ -43,7 +43,7 @@ class DataUtils
                 if ($utfErrorFlag) {
                     return 'UTF8 encoding error'; // or trigger_error() or throw new Exception()
                 }
-                return safeJsonEncode($clean, $options, $depth, true);
+                return self::safeEncode($clean, $options, $depth, true);
             default:
                 return 'Unknown error'; // or trigger_error() or throw new Exception()
         }
@@ -59,7 +59,7 @@ class DataUtils
      *
      * @return object Returns object or null
      */
-    public static function safeJsonDecode(string $value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): object
+    public static function safeDecode(string $value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): object
     {
         $decoded = json_decode($value, $options, $depth);
         switch (json_last_error())
@@ -79,7 +79,7 @@ class DataUtils
                 if ($utfErrorFlag) {
                     return 'UTF8 encoding error'; // or trigger_error() or throw new Exception()
                 }
-                return safeJsonDecode($clean, $options, $depth, true);
+                return self::safeDecode($clean, $options, $depth, true);
             default:
                 return 'Unknown error'; // or trigger_error() or throw new Exception()
         }
