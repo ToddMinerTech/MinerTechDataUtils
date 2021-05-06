@@ -59,7 +59,7 @@ class JsonUtil
      *
      * @return object Returns object or null
      */
-    public static function safeDecode(string $value, bool $options = false, int $depth = 512, bool $utfErrorFlag = false): object
+    public static function safeDecode(string $value, bool $options = false, int $depth = 512, bool $utfErrorFlag = false)
     {
         $decoded = json_decode($value, $options, $depth);
         switch (json_last_error())
