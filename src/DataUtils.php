@@ -19,11 +19,11 @@ class DataUtils
      * Taken from php.net comment: https://www.php.net/manual/en/function.json-last-error.php#115980
      * Added to handle some character encoding issues when building objects from json
      * 
-     * @param string $value Normal json string, like you'd use in json_encode.
+     * @param mixed $value Array/object
      *
-     * @return string Returns object or null like json_encode
+     * @return string Returns json string
      */
-    public static function safeJsonEncode(string $value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): object
+    public static function safeJsonEncode($value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): string
     {
         $encoded = json_encode($value, $options, $depth);
         switch (json_last_error())
@@ -43,13 +43,49 @@ class DataUtils
                 if ($utfErrorFlag) {
                     return 'UTF8 encoding error'; // or trigger_error() or throw new Exception()
                 }
-                return safe_json_encode($clean, $options, $depth, true);
+                return safeJsonEncode($clean, $options, $depth, true);
+            default:
+                return 'Unknown error'; // or trigger_error() or throw new Exception()
+        }
+    }
+    
+    /**
+     * safeJsonDecode
+     *
+     * Taken from php.net comment: https://www.php.net/manual/en/function.json-last-error.php#115980
+     * Added to handle some character encoding issues when building objects from json
+     * 
+     * @param string $value string to decode
+     *
+     * @return object Returns object or null
+     */
+    public static function safeJsonDecode(string $value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): object
+    {
+        $decoded = json_decode($value, $options, $depth);
+        switch (json_last_error())
+        {
+            case JSON_ERROR_NONE:
+                return $decoded;
+            case JSON_ERROR_DEPTH:
+                return 'Maximum stack depth exceeded'; // or trigger_error() or throw new Exception()
+            case JSON_ERROR_STATE_MISMATCH:
+                return 'Underflow or the modes mismatch'; // or trigger_error() or throw new Exception()
+            case JSON_ERROR_CTRL_CHAR:
+                return 'Unexpected control character found';
+            case JSON_ERROR_SYNTAX:
+                return 'Syntax error, malformed JSON'; // or trigger_error() or throw new Exception()
+            case JSON_ERROR_UTF8:
+                $clean = self::utf8ize($value);
+                if ($utfErrorFlag) {
+                    return 'UTF8 encoding error'; // or trigger_error() or throw new Exception()
+                }
+                return safeJsonDecode($clean, $options, $depth, true);
             default:
                 return 'Unknown error'; // or trigger_error() or throw new Exception()
         }
     }
 
-    private function utf8ize($mixed)
+    public static function utf8ize($mixed)
     {
         if (is_array($mixed)) {
             foreach ($mixed as $key => $value) {
