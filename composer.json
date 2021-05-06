@@ -1,11 +1,13 @@
 {
     "name": "miner-tech/miner-tech-data-utils",
-    "description": "Description of project MinerTechDataUtils.",
+    "description": "Class for various data handling utilities",
     "authors": [
         {
             "name": "Todd Miner",
             "email": "todd@miner.technology"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.4"
+    }
 }
