@@ -38,7 +38,7 @@ class StringUtil
      */
     public static function sStrip(string $inputStr): string
     {
-        $outputStr = strip($inputStr);
+        $outputStr = self::strip($inputStr);
         $outputStr = str_replace(' ','',$outputStr);
         $outputStr = str_replace('-','',$outputStr);
         $outputStr = str_replace('–','',$outputStr);
@@ -62,9 +62,9 @@ class StringUtil
      */
     public static function sComp(string $inputStr1, string $inputStr2): bool
     {
-        $compString1 = strip($inputStr1);
-        $compString2 = strip($inputStr2);
-        if(strip($compString1) == strip($compString2)) {
+        $compString1 = self::strip($inputStr1);
+        $compString2 = self::strip($inputStr2);
+        if(self::strip($compString1) == self::strip($compString2)) {
             $result = true;
         }else{
             $result = false;
@@ -85,7 +85,7 @@ class StringUtil
      */
     public static function ssComp(string $inputStr1, string $inputStr2):bool
     {
-        if(sComp(sStrip($inputStr1),sStrip($inputStr2))) {
+        if(self::sComp(self::sStrip($inputStr1),self::sStrip($inputStr2))) {
                 $result = true;
         }else{
                 $result = false;
@@ -116,7 +116,7 @@ class StringUtil
                 //Skip any words under the $minCharPerWord
                 if(strlen($needleArr[$i]) >= $minCharPerWord) {
                     //logIt('Checking for needle ('.sStrip($needleArr[$i]).')   within haystack ('.$haystack.')');
-                    if(strpos(sStrip($haystack),sStrip($needleArr[$i])) !== false) {
+                    if(strpos(self::sStrip($haystack),self::sStrip($needleArr[$i])) !== false) {
                         //logIt('needle found');
                         $matched = true;
                     }else{
