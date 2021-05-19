@@ -22,7 +22,7 @@ class StringUtil
      *
      * @return string Returns stripped string
      */
-    function strip(string $inputStr): string
+    public static function strip(string $inputStr): string
     {
         return trim(strtolower($inputStr));
     }
@@ -36,7 +36,7 @@ class StringUtil
      *
      * @return string Returns super stripped string
      */
-    function sStrip(string $inputStr): string
+    public static function sStrip(string $inputStr): string
     {
         $outputStr = strip($inputStr);
         $outputStr = str_replace(' ','',$outputStr);
@@ -60,7 +60,7 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    function sComp(string $inputStr1, string $inputStr2): bool
+    public static function sComp(string $inputStr1, string $inputStr2): bool
     {
         $compString1 = strip($inputStr1);
         $compString2 = strip($inputStr2);
@@ -83,7 +83,7 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    function ssComp(string $inputStr1, string $inputStr2):bool
+    public static function ssComp(string $inputStr1, string $inputStr2):bool
     {
         if(sComp(sStrip($inputStr1),sStrip($inputStr2))) {
                 $result = true;
@@ -104,7 +104,7 @@ class StringUtil
      *
      * @return bool Returns true if all words of the needle exist within the haystack
      */
-    function ssPhraseComp(string $needle, string $haystack, int $minCharPerWord = 3): bool
+    public static function ssPhraseComp(string $needle, string $haystack, int $minCharPerWord = 3): bool
     {
         $needleArr = explode(' ',$needle);
         $matchFailed = false;
