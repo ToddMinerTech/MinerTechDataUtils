@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
  * This class includes wrappers for the PHPOffice/PhpSpreadsheet project to facilitate working with spreadsheet data
  * https://github.com/PHPOffice/PhpSpreadsheet
  *
- * @package ToddMinerTech\apptivo-php-mt
+ * @package ToddMinerTech\MinerTechDataUtils
  */
 class SpreadsheetUtil
 {
@@ -64,7 +64,6 @@ class SpreadsheetUtil
                 }
             }
         }
-        
         return $valueRows;
     }
     
