@@ -42,7 +42,7 @@ class SpreadsheetUtil
             //Assumed 1st row is headers
             //Index 0 based by default, changing to 1 based - this is so we can continue in multiple places without incrementing rowNumber for each
             $rowNumber++;
-            $rowVals = new stdClass;
+            $rowVals = new \stdClass();
             //Loop the header values to build a value map that we'll use to get values in other loops
             if($rowNumber == 1) {
                 //For UTF8 csv files from excel we get a special character when json encoding.  Replace that out here.
@@ -53,7 +53,7 @@ class SpreadsheetUtil
                 $hasData = false;
                 foreach($curRow as $cCol) {
                     $rowVals->{$headerRow[$colNum]} = $cCol;
-                    if(strlen($cCol) > 1) {
+                    if($cCol) {
                         $hasData=true;
                     }
                     $colNum++;
