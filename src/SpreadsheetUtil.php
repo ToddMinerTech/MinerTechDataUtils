@@ -37,8 +37,7 @@ class SpreadsheetUtil
         $rowNumber = 0;
         $headerRow = [];
         $valueRows = [];
-        foreach($data as $curRow)
-        {
+        foreach($data as $curRow) {
             //Assumed 1st row is headers
             //Index 0 based by default, changing to 1 based - this is so we can continue in multiple places without incrementing rowNumber for each
             $rowNumber++;

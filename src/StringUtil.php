@@ -5,14 +5,28 @@ declare(strict_types=1);
 namespace ToddMinerTech\DataUtils;
 
 /**
- * Class DataUtils
+ * Class StringUtil
  *
- * Class to map an app name/id to static values that are required for each app.  No raw source for these right now, manually tested and documented.
+ * Various string editing and comparison functions
  *
  * @package ToddMinerTech\MinerTechDataUtils
  */
 class StringUtil
 {
+    /**
+     * removeSpaces
+     *
+     * Simple removal of all spaces
+     * 
+     * @param string $inputStr String to be stripped
+     *
+     * @return string Returns stripped string
+     */
+    public static function removeSpaces(string $inputStr): string
+    {
+        return str_replace(' ', '', $inputStr);
+    }
+    
     /**
      * strip
      *
