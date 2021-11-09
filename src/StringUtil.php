@@ -76,7 +76,7 @@ class StringUtil
      */
     public static function sComp(?string $inputStr1, ?string $inputStr2): bool
     {
-        if(self::strip($compString1) == self::strip($compString2)) {
+        if(self::strip($inputStr1) == self::strip($inputStr2)) {
             $result = true;
         }else{
             $result = false;
