@@ -74,7 +74,7 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    public static function sComp(string $inputStr1, string $inputStr2): bool
+    public static function sComp(string $inputStr1 = '', string $inputStr2 = ''): bool
     {
         $compString1 = self::strip($inputStr1);
         $compString2 = self::strip($inputStr2);
@@ -97,7 +97,7 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    public static function ssComp(string $inputStr1, string $inputStr2):bool
+    public static function ssComp(string $inputStr1 = '', string $inputStr2 = ''):bool
     {
         if(self::sComp(self::sStrip($inputStr1),self::sStrip($inputStr2))) {
                 $result = true;
