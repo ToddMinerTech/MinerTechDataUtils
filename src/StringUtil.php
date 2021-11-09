@@ -38,7 +38,11 @@ class StringUtil
      */
     public static function strip(?string $inputStr): string
     {
-        return trim(strtolower($inputStr));
+        if(!$inputStr) {
+            return '';
+        }else{
+            return trim(strtolower($inputStr));
+        }
     }
     
     /**
