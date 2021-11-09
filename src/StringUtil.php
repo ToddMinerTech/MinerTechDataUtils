@@ -22,7 +22,7 @@ class StringUtil
      *
      * @return string Returns stripped string
      */
-    public static function removeSpaces(string $inputStr): string
+    public static function removeSpaces(?string $inputStr): string
     {
         return str_replace(' ', '', $inputStr);
     }
@@ -36,7 +36,7 @@ class StringUtil
      *
      * @return string Returns stripped string
      */
-    public static function strip(string $inputStr): string
+    public static function strip(?string $inputStr): string
     {
         return trim(strtolower($inputStr));
     }
@@ -50,7 +50,7 @@ class StringUtil
      *
      * @return string Returns super stripped string
      */
-    public static function sStrip(string $inputStr): string
+    public static function sStrip(?string $inputStr): string
     {
         $outputStr = self::strip($inputStr);
         $outputStr = str_replace(' ','',$outputStr);
@@ -76,8 +76,6 @@ class StringUtil
      */
     public static function sComp(?string $inputStr1, ?string $inputStr2): bool
     {
-        $compString1 = self::strip($inputStr1);
-        $compString2 = self::strip($inputStr2);
         if(self::strip($compString1) == self::strip($compString2)) {
             $result = true;
         }else{
