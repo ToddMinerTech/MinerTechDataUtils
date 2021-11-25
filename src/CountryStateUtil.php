@@ -26,7 +26,7 @@ class CountryStateUtil
      */
     public static function getStateNameOrCode(string $stateNameOrCode): object
     {
-        $stateArr = getStateCodeArr();
+        $stateArr = self::getStateCodeArr();
         $stateName = '';
         $returnObj = new \stdClass();
         foreach ($stateArr as $key => $value) {
@@ -139,7 +139,7 @@ class CountryStateUtil
      */
     public static function getCountryNameOrCode(string $countryCodeOrName): object
     {
-        $stateArr = getCountryCodeArr();
+        $stateArr = self::getCountryCodeArr();
         $returnObj = new \stdClass();   
         foreach ($stateArr as $key => $value) {
             if(StringUtil::sComp($countryCodeOrName,$key) || StringUtil::sComp($countryCodeOrName,$value)) {
