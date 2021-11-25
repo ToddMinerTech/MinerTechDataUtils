@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace ToddMinerTech\DataUtils;
 
+use ToddMinerTech\DataUtils\StringUtil;
+
 /**
  * Class ArrUtil
  *
@@ -14,24 +16,27 @@ namespace ToddMinerTech\DataUtils;
 class CountryStateUtil
 {
     /**
-     * getStateNameFromCode
+     * getStateNameOrCode
      *
-     * Take a 2 letter state abbreviation and get the full name
+     * Take the 2 letter abbreviation, or the full name, and get the opposite
      * 
-     * @param string $inputStr New value to insert into array
+     * @param string $stateNameOrCode
      *
      * @return string The full state name
      */
-    public static function getStateNameFromCode(string $stateCode): string
+    public static function getStateNameOrCode(string $stateNameOrCode): string
     {
         $stateArr = getStateCodeArr();
         $stateName = '';
         foreach ($stateArr as $key => $value) {
-            if(sComp($stateCode,$key)) {
-                $stateName = $value;
+            if(StringUtil::sComp($stateNameOrCode,$key)) {
+                return $value;
+            }
+            if(StringUtil::sComp($stateNameOrCode,$value)) {
+                return $key;
             }
         }
-        return $stateName;
+        throw new Exception('CountryStateUtil: getStateNameOrCode: We could not locate a country definition for $stateNameOrCode ('.$stateNameOrCode.')');
     }
     
     /**
@@ -120,6 +125,44 @@ class CountryStateUtil
             'NW'=>'North West',
             'NC'=>'Northern Cape',
             'WC'=>'Western Cape'
+        );
+    }
+
+    /**
+     * getCountryNameOrCode
+     *
+     * Take the 2 letter abbreviation, or the full name, and get the opposite
+     * 
+     * @param string $countryCodeOrName
+     *
+     * @return string The full state name
+     */
+    public static function getCountryNameOrCode(string $countryCodeOrName): string
+    {
+        $stateArr = getCountryCodeArr();
+        $stateName = '';
+        foreach ($stateArr as $key => $value) {
+            if(StringUtil::sComp($countryCodeOrName,$key)) {
+                return $value;
+            }else if(StringUtil::sComp($countryCodeOrName,$value)) {
+                return $key;
+            }
+        }
+        throw new Exception('CountryStateUtil: getCountryNameFromCodeOrName: We could not locate a country definition for $countryCodeOrName ('.$countryCodeOrName.')');
+    }
+    
+    /**
+     * getCountryCodeArr
+     *
+     * Provides an array mapping code to name
+     *
+     * @return array 
+     */
+    public static function getCountryCodeArr(): array
+    {
+        //IMPROVEMENT - implement this globally
+        return array(
+            'US'=>'United States'
         );
     }
 }
