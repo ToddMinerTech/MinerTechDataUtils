@@ -22,18 +22,18 @@ class CountryStateUtil
      * 
      * @param string $stateNameOrCode
      *
-     * @return string The full state name
+     * @return object object with name and code
      */
-    public static function getStateNameOrCode(string $stateNameOrCode): string
+    public static function getStateNameOrCode(string $stateNameOrCode): object
     {
         $stateArr = getStateCodeArr();
         $stateName = '';
+        $returnObj = new \stdClass();
         foreach ($stateArr as $key => $value) {
-            if(StringUtil::sComp($stateNameOrCode,$key)) {
-                return $value;
-            }
-            if(StringUtil::sComp($stateNameOrCode,$value)) {
-                return $key;
+            if(StringUtil::sComp($stateNameOrCode,$key) || StringUtil::sComp($stateNameOrCode,$value)) {
+                $returnObj->code = $key;
+                $returnObj->name = $value;
+                return $returnObj;
             }
         }
         throw new Exception('CountryStateUtil: getStateNameOrCode: We could not locate a country definition for $stateNameOrCode ('.$stateNameOrCode.')');
@@ -135,17 +135,17 @@ class CountryStateUtil
      * 
      * @param string $countryCodeOrName
      *
-     * @return string The full state name
+     * @return object object with name and code
      */
-    public static function getCountryNameOrCode(string $countryCodeOrName): string
+    public static function getCountryNameOrCode(string $countryCodeOrName): object
     {
         $stateArr = getCountryCodeArr();
-        $stateName = '';
+        $returnObj = new \stdClass();   
         foreach ($stateArr as $key => $value) {
-            if(StringUtil::sComp($countryCodeOrName,$key)) {
-                return $value;
-            }else if(StringUtil::sComp($countryCodeOrName,$value)) {
-                return $key;
+            if(StringUtil::sComp($countryCodeOrName,$key) || StringUtil::sComp($countryCodeOrName,$value)) {
+                $returnObj->code = $key;
+                $returnObj->name = $value;
+                return $returnObj;
             }
         }
         throw new Exception('CountryStateUtil: getCountryNameFromCodeOrName: We could not locate a country definition for $countryCodeOrName ('.$countryCodeOrName.')');
