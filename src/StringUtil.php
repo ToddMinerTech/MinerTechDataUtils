@@ -78,9 +78,9 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    public static function sComp(?string $inputStr1, ?string $inputStr2): bool
+    public static function sComp(string|int $inputStr1 = '', string|int $inputStr2 = ''): bool
     {
-        if(self::strip($inputStr1) == self::strip($inputStr2)) {
+        if(self::strip(strval($inputStr1)) == self::strip(strval($inputStr2))) {
             $result = true;
         }else{
             $result = false;
