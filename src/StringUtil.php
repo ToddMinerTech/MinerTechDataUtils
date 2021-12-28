@@ -36,12 +36,12 @@ class StringUtil
      *
      * @return string Returns stripped string
      */
-    public static function strip(?string $inputStr): string
+    public static function strip(string|int $inputStr = ''): string
     {
         if(!$inputStr) {
             return '';
         }else{
-            return trim(strtolower($inputStr));
+            return trim(strtolower(strval($inputStr)));
         }
     }
     
@@ -54,9 +54,9 @@ class StringUtil
      *
      * @return string Returns super stripped string
      */
-    public static function sStrip(?string $inputStr): string
+    public static function sStrip(string|int $inputStr = ''): string
     {
-        $outputStr = self::strip($inputStr);
+        $outputStr = self::strip(strval($inputStr));
         $outputStr = str_replace(' ','',$outputStr);
         $outputStr = str_replace('-','',$outputStr);
         $outputStr = str_replace('–','',$outputStr);
@@ -99,7 +99,7 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    public static function ssComp(?string $inputStr1, ?string $inputStr2):bool
+    public static function ssComp(string|int $inputStr1 = '', string|int $inputStr2 = ''):bool
     {
         if(self::sComp(self::sStrip($inputStr1),self::sStrip($inputStr2))) {
                 $result = true;
