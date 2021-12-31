@@ -58,6 +58,31 @@ class ArrUtil
         return null;
     }
     
+    /**
+     * matchValueInObjectArrayIndex
+     *
+     * Same as matchValueInObjectArray but returns the index value instead.   
+     * 
+     * @param string $valueToMatch The value you are trying to match within the object attribute
+     * 
+     * @param string $attributeToMatch The attribute name you want to check the value of
+     * 
+     * @param array $arrayToSearch The array of objects you are trying to match
+     *
+     * @return object Returns the index of the object, or -1 if no match
+     */
+    public static function matchValueInObjectArrayIndex(string $valueToMatch, string $attributeToMatch, array $arrayToSearch): int
+    {
+        for($i = 0; $i < count($arrayToSearch); $i++) {
+            if(!isset($arrayToSearch[$i]->$attributeToMatch)) {
+                continue;
+            }
+            if(StringUtil::sSComp($arrayToSearch[$i]->$attributeToMatch, $valueToMatch)) {
+                return $i;
+            }
+        }
+        return -1;
+    }
 
     /**
      * mapValueInObjectArray
