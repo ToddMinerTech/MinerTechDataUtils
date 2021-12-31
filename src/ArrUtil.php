@@ -71,7 +71,7 @@ class ArrUtil
      *
      * @return object Returns the index of the object, or -1 if no match
      */
-    public static function matchValueInObjectArrayIndex(string $valueToMatch, string $attributeToMatch, array $arrayToSearch): int
+    public static function matchValueInObjectArrayIndex(string $valueToMatch, string $attributeToMatch, array $arrayToSearch): int|bool
     {
         for($i = 0; $i < count($arrayToSearch); $i++) {
             if(!isset($arrayToSearch[$i]->$attributeToMatch)) {
@@ -81,7 +81,28 @@ class ArrUtil
                 return $i;
             }
         }
-        return -1;
+        return false;
+    }
+    
+    /**
+     * matchValueInObjectArrayClosure
+     *
+     * Searches and returns an object from within an array using an anonymous function.
+     * 
+     * @param string $matchCriteria An anonymous function that takes a comparable object returns bool value.  True if a record matches.
+     * 
+     * @param array $arrayToSearch The array of objects you are trying to match
+     *
+     * @return object Returns the object if matched, or null if no match is found
+     */
+    public static function matchValueInObjectArrayClosure(Closure $matchCriteria, array $arrayToSearch): ?object
+    {
+        for($i = 0; $i < count($arrayToSearch); $i++) {
+            if($matchCriteria($arrayToSearch[$i])) {
+                return $arrayToSearch[$i];
+            }
+        }
+        return null;
     }
 
     /**
