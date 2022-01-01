@@ -147,4 +147,32 @@ class StringUtil
             return false;
         }
     }
+    
+    /**
+     * getFirstNameFromFullName
+     *
+     * split a name by the 1st space to get a first/last name
+     * 
+     * @param string $fullName Full name of a person to split
+     *
+     * @return string Returns all characters before the 1st space
+     */
+    public static function getFirstNameFromFullName($fullName): string
+    {
+        return substr($fullName,0,strpos($fullName,' '));
+    }
+
+    /**
+     * getLastNameFromFullName
+     *
+     * split a name by the 1st space to get a first/last name
+     * 
+     * @param string $fullName Full name of a person to split
+     *
+     * @return string Returns all characters after the 1st space
+     */
+    public static function getLastNameFromFullName($fullName): string
+    {
+        return substr($fullName,strpos($fullName,' ')+1);
+    }
 }
