@@ -88,10 +88,18 @@ class StringUtil
         return $result;
     }
 
+    public static function ssComp(string|int $inputStr1 = '', string|int $inputStr2 = ''): bool
+    {
+        if(self::sComp(self::sStrip($inputStr1),self::sStrip($inputStr2))) {
+            return true;
+        }
+        return false;
+    }
+
     /**
-     * ssComp
+     * ssCompIfValsPresent
      *
-     * Wraps sComp but this completely removes spaces and hyphens in the comparison
+     * Wraps ssComp but returns false if both inputs are empty.  Used when comparing 2 objects to detect a duplicate, but not wanting to flag a dupe on an empty value.
      * 
      * @param string $inputStr1 First string to compare
      * 
@@ -99,14 +107,14 @@ class StringUtil
      *
      * @return bool Returns true if strings match
      */
-    public static function ssComp(string|int $inputStr1 = '', string|int $inputStr2 = ''):bool
+    public static function ssCompIfValsPresent(string|int $inputStr1 = '', string|int $inputStr2 = ''): bool
     {
         if(self::sComp(self::sStrip($inputStr1),self::sStrip($inputStr2))) {
-                $result = true;
-        }else{
-                $result = false;
+            if(strlen(strval($inputStr1)) > 0 || strlen(strval($inputStr2)) > 0) {
+                return true;
+            }
         }
-        return $result;
+        return false;
     }
     
     /**
