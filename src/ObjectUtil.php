@@ -24,12 +24,13 @@ class ObjectUtil
      *
      * @return bool True if the object is empty
      */
-    static function isObjectEmpty(object $object, array $propertiesToExclude = []): bool
+    static function isObjectEmpty(object $object, array $propertiesToExclude): bool
     {
         foreach($object as $property => $value) {
-            if($value && !in_array($property, $propertiesToExclude)) {
+            if($value && strlen(strval($value)) > 0 && !in_array($property, $propertiesToExclude)) {
                 return false;
             }
         }
+        return true;
     }
 }
