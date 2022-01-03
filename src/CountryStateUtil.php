@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ToddMinerTech\DataUtils;
 
+use Exception;
 use ToddMinerTech\DataUtils\StringUtil;
 
 /**
@@ -36,7 +37,9 @@ class CountryStateUtil
                 return $returnObj;
             }
         }
-        throw new Exception('CountryStateUtil: getStateNameOrCode: We could not locate a country definition for $stateNameOrCode ('.$stateNameOrCode.')');
+        return null;
+        //TASK - Handle this with resultobject instead
+        //throw new Exception('CountryStateUtil: getStateNameOrCode: We could not locate a country definition for $stateNameOrCode ('.$stateNameOrCode.')');
     }
     
     /**
