@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ToddMinerTech\DataUtils;
+namespace ToddMinerTech\MinerTechDataUtils;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;

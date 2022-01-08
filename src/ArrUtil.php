@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ToddMinerTech\DataUtils;
+namespace ToddMinerTech\MinerTechDataUtils;
 
-use ToddMinerTech\DataUtils\StringUtil;
+use ToddMinerTech\MinerTechDataUtils\ResultObject;
+use ToddMinerTech\MinerTechDataUtils\StringUtil;
 
 /**
  * Class ArrUtil
@@ -106,9 +107,9 @@ class ArrUtil
     }
 
     /**
-     * mapValueInObjectArray
+     * mapValueInObjectArrayWithResult
      *
-     * Wraps matchValueInObjectArray to provide a specific mapped output value from search criteria and array of objects.
+     * Clone of mapValueInObjectArray but returns a ResultObject instead to identify whether a match was found
      * 
      * @param string $valueToMatch The value you are trying to match within the object attribute
      * 
@@ -118,14 +119,14 @@ class ArrUtil
      * 
      * @param array $arrayToSearch The array of objects you are trying to match
      *
-     * @return string Returns the mapped value if a match is found, otherwise returns the input value unchanged
+     * @return ResultObject If a match is found a success with the mapped value is returned, otherwise a failure with the original value
      */
-    public static function mapValueInObjectArray(string $valueToMatch, string $attributeToMatch, string $attributeToReturn, array $arrayToSearch): string
+    public static function mapValueInObjectArrayWithResult(string $valueToMatch, string $attributeToMatch, string $attributeToReturn, array $arrayToSearch): ResultObject
     {
         $matchedObject = self::matchValueInObjectArray($valueToMatch, $attributeToMatch, $arrayToSearch);
         if(!$matchedObject || !isset($matchedObject->$attributeToReturn)) {
-            return $valueToMatch;
+            return ResultObject::success($valueToMatch);
         }
-        return $matchedObject->$attributeToReturn;
+        return ResultObject::fai($matchedObject->$attributeToReturn);
     }
 }

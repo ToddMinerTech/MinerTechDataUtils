@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ToddMinerTech\DataUtils;
+namespace ToddMinerTech\MinerTechDataUtils;
 
 use Exception;
-use ToddMinerTech\DataUtils\StringUtil;
+use ToddMinerTech\MinerTechDataUtils\StringUtil;
 
 /**
  * Class ArrUtil
