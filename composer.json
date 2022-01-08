@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ToddMinerTech\\DataUtils\\": "src"
+            "ToddMinerTech\\MinerTechDataUtils\\": "src"
         }
     },
     "autoload-dev": {
