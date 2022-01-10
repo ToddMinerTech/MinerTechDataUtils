@@ -22,7 +22,10 @@ Via Composer
 $ composer require ToddMinerTech/MinerTechDataUtils
 ```
 
+## Documentation
 Generate documentation using phpDocumentator 3: https://www.phpdoc.org/
+
+Sample command: php phpDocumentor.phar -d d:\www\minertechdatautils -f src -t documentation
 
 ## License
 

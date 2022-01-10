@@ -162,12 +162,22 @@ class StringUtil
      * split a name by the 1st space to get a first/last name
      * 
      * @param string $fullName Full name of a person to split
+     * 
+     * @param bool $returnEmptyIfNoSpace Defaults to true.  If true then an empty string is returned when no space is present.  Otherwise the fullname is returned.
      *
-     * @return string Returns all characters before the 1st space
+     * @return string Returns all characters before the 1st space, all characters, or none at all depending on $returnEmptyIfNoSpace
      */
-    public static function getFirstNameFromFullName($fullName): string
+    public static function getFirstNameFromFullName(string $fullName, bool $returnEmptyIfNoSpace = true): string
     {
-        return substr($fullName,0,strpos($fullName,' '));
+        $spaceIndex = strpos($fullName,' ');
+        if($spaceIndex) {
+            return substr($fullName,0,strpos($fullName,' '));
+        }
+        if($returnEmptyIfNoSpace) {
+            return '';
+        }else{
+            return $fullName;
+        }
     }
 
     /**
@@ -176,11 +186,21 @@ class StringUtil
      * split a name by the 1st space to get a first/last name
      * 
      * @param string $fullName Full name of a person to split
+     * 
+     * @param bool $returnEmptyIfNoSpace Defaults to true.  If true then an empty string is returned when no space is present.  Otherwise the fullname is returned.
      *
-     * @return string Returns all characters after the 1st space
+     * @return string Returns all characters before the 1st space, all characters, or none at all depending on $returnEmptyIfNoSpace
      */
-    public static function getLastNameFromFullName($fullName): string
+    public static function getLastNameFromFullName(string $fullName, bool $returnEmptyIfNoSpace = false): string
     {
-        return substr($fullName,strpos($fullName,' ')+1);
+        $spaceIndex = strpos($fullName,' ');
+        if($spaceIndex) {
+            return substr($fullName,strpos($fullName,' ')+1);
+        }
+        if($returnEmptyIfNoSpace) {
+            return '';
+        }else{
+            return $fullName;
+        }
     }
 }
