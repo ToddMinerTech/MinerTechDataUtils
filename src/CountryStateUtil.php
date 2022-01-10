@@ -25,7 +25,7 @@ class CountryStateUtil
      *
      * @return object object with name and code
      */
-    public static function getStateNameOrCode(string $stateNameOrCode): object
+    public static function getStateNameOrCode(string $stateNameOrCode): ?object
     {
         $stateArr = self::getStateCodeArr();
         $stateName = '';
@@ -38,7 +38,7 @@ class CountryStateUtil
             }
         }
         return null;
-        //TASK - Handle this with resultobject instead
+        //IMPROVEMENT - Handle this with resultobject instead
         //throw new Exception('CountryStateUtil: getStateNameOrCode: We could not locate a country definition for $stateNameOrCode ('.$stateNameOrCode.')');
     }
     
@@ -140,7 +140,7 @@ class CountryStateUtil
      *
      * @return object object with name and code
      */
-    public static function getCountryNameOrCode(string $countryCodeOrName): object
+    public static function getCountryNameOrCode(string $countryCodeOrName): ?object
     {
         $stateArr = self::getCountryCodeArr();
         $returnObj = new \stdClass();   
@@ -151,7 +151,7 @@ class CountryStateUtil
                 return $returnObj;
             }
         }
-        throw new Exception('CountryStateUtil: getCountryNameFromCodeOrName: We could not locate a country definition for $countryCodeOrName ('.$countryCodeOrName.')');
+        return null;
     }
     
     /**
@@ -165,7 +165,9 @@ class CountryStateUtil
     {
         //IMPROVEMENT - implement this globally
         return array(
-            'US'=>'United States'
+            'US'=>'United States',
+            'CA'=>'Canada',
+            'MX'=>'Mexico'
         );
     }
 }
