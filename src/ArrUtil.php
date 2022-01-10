@@ -125,8 +125,8 @@ class ArrUtil
     {
         $matchedObject = self::matchValueInObjectArray($valueToMatch, $attributeToMatch, $arrayToSearch);
         if(!$matchedObject || !isset($matchedObject->$attributeToReturn)) {
-            return ResultObject::success($valueToMatch);
+            return ResultObject::fail($valueToMatch);
         }
-        return ResultObject::fai($matchedObject->$attributeToReturn);
+        return ResultObject::success($matchedObject->$attributeToReturn);
     }
 }
