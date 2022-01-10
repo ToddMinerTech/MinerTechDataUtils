@@ -15,6 +15,7 @@ jobs:
           php_version: 8.0
           php_extensions: gd
           version: 2
+          args: --ignore-platform-req=ext-zip
 
       - name: PHPUnit Tests
         uses: php-actions/phpunit@v3
