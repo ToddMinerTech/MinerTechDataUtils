@@ -27,3 +27,6 @@ jobs:
         env:
           XDEBUG_MODE: coverage
           TEST_NAME: Scarlett
+          
+      - name: Upload Scrutinizer coverage
+        uses: sudo-bot/action-scrutinizer@latest
