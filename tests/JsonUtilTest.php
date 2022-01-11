@@ -18,7 +18,7 @@ class JsonUtilTest extends \PHPUnit\Framework\TestCase
 
         $decodeResult = JsonUtil::safeDecode($testJsonString);
         $this->assertNotNull($decodeResult);
-        
+
         $encodeResult = JsonUtil::safeEncode($decodeResult);
         $this->assertNotNull($encodeResult);
     }

@@ -6,7 +6,7 @@ namespace ToddMinerTech\MinerTechDataUtils;
  * Class ResultObject
  *
  * Generic result object returned by all methods for error handling
- * 
+ *
  * Contains bool to track success, then the payload will either be the returned variant, or a string with a failure message.
  *
  * @package ToddMinerTech\MinerTechDataUtils
