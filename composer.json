@@ -37,6 +37,7 @@
     },
     "scripts": {
         "test": "phpunit tests",
+        "test-coverage": "phpunit --coverage-html=coverage",
         "check-style": "phpcs src tests",
         "fix-style": "phpcbf src tests"
     },

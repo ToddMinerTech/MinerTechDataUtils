@@ -7,12 +7,17 @@ namespace ToddMinerTech\MinerTechDataUtils;
 use ToddMinerTech\MinerTechDataUtils\ArrUtil;
 use ToddMinerTech\MinerTechDataUtils\ResultObject;
 
+    /**
+     * @covers  \ToddMinerTech\MinerTechDataUtils\ArrUtil
+     * @covers  \ToddMinerTech\MinerTechDataUtils\StringUtil
+     * @covers  \ToddMinerTech\MinerTechDataUtils\ResultObject
+     */
 class ArrUtilTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test that we can successfully map a value to another
      */
-    public function testMapValueInObjectArrayWithResult_FailWithSameValueWithMatch()
+    public function test_mapValueInObjectArrayWithResult_FailWithSameValueWithMatch()
     {
         $data = [
             (object) [
@@ -31,10 +36,11 @@ class ArrUtilTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($resultObject->isSuccessful);
         $this->assertEquals('FoundMe1', $resultObject->payload);
     }
+    
     /**
      * Test that we will receive a fail status and our input string when no match is found
      */
-    public function testMapValueInObjectArrayWithResult_FailWithSameValueWithoutMatch()
+    public function test_mapValueInObjectArrayWithResult_FailWithSameValueWithoutMatch()
     {
         $data = [
             (object) [

@@ -27,6 +27,19 @@ Generate documentation using phpDocumentator 3: https://www.phpdoc.org/
 
 Sample command: php phpDocumentor.phar -d d:\www\minertechdatautils -f src -t documentation
 
+## Testing
+Testing and coverage implemented for PHPUnit
+
+Execute Tests:
+``` bash
+$ composer test
+```
+
+Generate Test Coverage HTML Report:
+``` bash
+$ composer test-coverage
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

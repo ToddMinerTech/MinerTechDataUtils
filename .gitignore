@@ -1,2 +1,5 @@
-
-vendor*
+.phpunit.cache
+coverage
+nbproject
+phpunit.xml
+vendor

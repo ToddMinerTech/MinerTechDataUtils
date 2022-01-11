@@ -6,13 +6,16 @@ namespace ToddMinerTech\MinerTechDataUtils;
 
 use ToddMinerTech\MinerTechDataUtils\CountryStateUtil;
 use ToddMinerTech\MinerTechDataUtils\ResultObject;
-
+/**
+* @covers  \ToddMinerTech\MinerTechDataUtils\CountryStateUtil
+* @covers  \ToddMinerTech\MinerTechDataUtils\StringUtil
+*/
 class CountryStateUtilTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test that we get a state name from a valid state code.  Verifies capitalization and trimming.
      */
-    public function testGetStateNameOrCode_GetStateNameFromCodeValid()
+    public function test_getStateNameOrCode_GetStateNameFromCodeValid()
     {
         $data = 'cA ';
         
@@ -24,7 +27,7 @@ class CountryStateUtilTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we get a state code from a valid state name.  Verifies capitalization and trimming.
      */
-    public function testGetStateNameOrCode_GetStateCodeFromNameValid()
+    public function test_getStateNameOrCode_GetStateCodeFromNameValid()
     {
         $data = 'califorNIA ';
         
@@ -36,7 +39,7 @@ class CountryStateUtilTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we get a null value with an invalid state name
      */
-    public function testGetStateNameOrCode_GetStateNameFromCodeInvalidValid()
+    public function test_getStateNameOrCode_GetStateNameFromCodeInvalidValid()
     {
         $data = 'cAjs';
         
@@ -48,7 +51,7 @@ class CountryStateUtilTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we get a state name from a valid state code.  Verifies capitalization and trimming.
      */
-    public function testGetCountryNameOrCode_GetCountryNameFromCodeValid()
+    public function test_getCountryNameOrCode_GetCountryNameFromCodeValid()
     {
         $data = 'uS ';
         
@@ -60,7 +63,7 @@ class CountryStateUtilTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we get a state code from a valid state name.  Verifies capitalization and trimming.
      */
-    public function testGetCountryNameOrCode_GetCountryCodeFromNameValid()
+    public function test_getCountryNameOrCode_GetCountryCodeFromNameValid()
     {
         $data = 'unITED states ';
         
@@ -72,7 +75,7 @@ class CountryStateUtilTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we get a null value with an invalid state name
      */
-    public function testGetCountryNameOrCode_GetCountryNameFromCodeInvalidValid()
+    public function test_getCountryNameOrCode_GetCountryNameFromCodeInvalidValid()
     {
         $data = '123';
         
