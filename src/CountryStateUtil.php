@@ -20,7 +20,7 @@ class CountryStateUtil
      * getStateNameOrCode
      *
      * Take the 2 letter abbreviation, or the full name, and get the opposite
-     * 
+     *
      * @param string $stateNameOrCode
      *
      * @return object object with name and code
@@ -31,7 +31,7 @@ class CountryStateUtil
         $stateName = '';
         $returnObj = new \stdClass();
         foreach ($stateArr as $key => $value) {
-            if(StringUtil::sComp($stateNameOrCode,$key) || StringUtil::sComp($stateNameOrCode,$value)) {
+            if (StringUtil::sComp($stateNameOrCode, $key) || StringUtil::sComp($stateNameOrCode, $value)) {
                 $returnObj->code = $key;
                 $returnObj->name = $value;
                 return $returnObj;
@@ -41,13 +41,13 @@ class CountryStateUtil
         //IMPROVEMENT - Handle this with resultobject instead
         //throw new Exception('CountryStateUtil: getStateNameOrCode: We could not locate a country definition for $stateNameOrCode ('.$stateNameOrCode.')');
     }
-    
+
     /**
      * getStateCodeArr
      *
      * Provides an array mapping code to name
      *
-     * @return array 
+     * @return array
      */
     public static function getStateCodeArr(): array
     {
@@ -135,7 +135,7 @@ class CountryStateUtil
      * getCountryNameOrCode
      *
      * Take the 2 letter abbreviation, or the full name, and get the opposite
-     * 
+     *
      * @param string $countryCodeOrName
      *
      * @return object object with name and code
@@ -143,9 +143,9 @@ class CountryStateUtil
     public static function getCountryNameOrCode(string $countryCodeOrName): ?object
     {
         $stateArr = self::getCountryCodeArr();
-        $returnObj = new \stdClass();   
+        $returnObj = new \stdClass();
         foreach ($stateArr as $key => $value) {
-            if(StringUtil::sComp($countryCodeOrName,$key) || StringUtil::sComp($countryCodeOrName,$value)) {
+            if (StringUtil::sComp($countryCodeOrName, $key) || StringUtil::sComp($countryCodeOrName, $value)) {
                 $returnObj->code = $key;
                 $returnObj->name = $value;
                 return $returnObj;
@@ -153,13 +153,13 @@ class CountryStateUtil
         }
         return null;
     }
-    
+
     /**
      * getCountryCodeArr
      *
      * Provides an array mapping code to name
      *
-     * @return array 
+     * @return array
      */
     public static function getCountryCodeArr(): array
     {
@@ -171,4 +171,3 @@ class CountryStateUtil
         );
     }
 }
-

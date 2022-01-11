@@ -18,7 +18,7 @@ class JsonUtil
      *
      * Taken from php.net comment: https://www.php.net/manual/en/function.json-last-error.php#115980
      * Added to handle some character encoding issues when building objects from json
-     * 
+     *
      * @param mixed $value Array/object
      *
      * @return string Returns json string
@@ -26,8 +26,7 @@ class JsonUtil
     public static function safeEncode($value, int $options = 0, int $depth = 512, bool $utfErrorFlag = false): string
     {
         $encoded = json_encode($value, $options, $depth);
-        switch (json_last_error())
-        {
+        switch (json_last_error()) {
             case JSON_ERROR_NONE:
                 return $encoded;
             case JSON_ERROR_DEPTH:
@@ -48,13 +47,13 @@ class JsonUtil
                 return 'Unknown error'; // or trigger_error() or throw new Exception()
         }
     }
-    
+
     /**
      * safeJsonDecode
      *
      * Taken from php.net comment: https://www.php.net/manual/en/function.json-last-error.php#115980
      * Added to handle some character encoding issues when building objects from json
-     * 
+     *
      * @param string $value string to decode
      *
      * @return object Returns object or null
@@ -62,8 +61,7 @@ class JsonUtil
     public static function safeDecode(string $value, bool $options = false, int $depth = 512, bool $utfErrorFlag = false)
     {
         $decoded = json_decode($value, $options, $depth);
-        switch (json_last_error())
-        {
+        switch (json_last_error()) {
             case JSON_ERROR_NONE:
                 return $decoded;
             case JSON_ERROR_DEPTH:
@@ -91,7 +89,7 @@ class JsonUtil
             foreach ($mixed as $key => $value) {
                 $mixed[$key] = utf8ize($value);
             }
-        } else if (is_string ($mixed)) {
+        } elseif (is_string($mixed)) {
             return utf8_encode($mixed);
         }
         return $mixed;

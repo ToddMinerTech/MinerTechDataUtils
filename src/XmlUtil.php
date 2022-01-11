@@ -6,8 +6,8 @@ namespace ToddMinerTech\MinerTechDataUtils;
 
 /**
  * Class XmlUtil
- * 
- * Various xml handling functions 
+ *
+ * Various xml handling functions
  *
  * @package ToddMinerTech\MinerTechDataUtils
  */
@@ -17,12 +17,12 @@ class XmlUtil
      * xmlToArray
      *
      * A common function found across the internet, provide XML, get a php array back
-     * 
+     *
      * @param SimpleXMLElement $xml XML element to be converted
      *
      * @return string Returns a php array of XML
      */
-    static function xmlToArray(\SimpleXMLElement $xml) :Array
+    public static function xmlToArray(\SimpleXMLElement $xml): array
     {
         $arr = array();
         foreach ($xml as $element) {
