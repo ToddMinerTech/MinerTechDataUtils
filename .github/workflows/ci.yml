@@ -23,5 +23,5 @@ jobs:
           TEST_NAME: Scarlett
         with:
           bootstrap: vendor/autoload.php
-          configuration: phpunit.xml
+          configuration: /phpunit.xml
           args: --coverage-text
