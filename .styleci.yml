@@ -1,1 +1,15 @@
+risky: false
+
+version: 8.0
+
 preset: psr12
+
+tab-width: 4
+
+use-tabs: false
+
+finder:
+  exclude:
+    - "tests"
+  name:
+    - "*.php"
