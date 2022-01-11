@@ -25,17 +25,19 @@ $ composer require ToddMinerTech/MinerTechDataUtils
 ## Documentation
 Generate documentation using phpDocumentator 3: https://www.phpdoc.org/
 
-Sample command: php phpDocumentor.phar -d d:\www\minertechdatautils -f src -t documentation
+``` bash
+$ php phpDocumentor.phar -d d:\www\minertechdatautils -f src -t documentation
+```
 
 ## Testing
 Testing and coverage implemented for PHPUnit
 
-Execute Tests:
+Execute tests:
 ``` bash
 $ composer test
 ```
 
-Generate Test Coverage HTML Report:
+Generate test coverage HTML report:
 ``` bash
 $ composer test-coverage
 ```
