@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
+[![StyleCI](https://github.styleci.io/repos/364739267/shield?branch=main)](https://github.styleci.io/repos/364739267?branch=main)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 A package of common helpers for my apps
@@ -53,4 +54,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-packagist]: https://packagist.org/packages/ToddMinerTech/MinerTechDataUtils
 [link-downloads]: https://packagist.org/packages/ToddMinerTech/MinerTechDataUtils
 [link-author]: https://github.com/ToddMinerTech
-[link-contributors]: ../../contributors

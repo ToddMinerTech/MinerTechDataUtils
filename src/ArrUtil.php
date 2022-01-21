@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ToddMinerTech\MinerTechDataUtils;
 
+use Closure;
 use ToddMinerTech\MinerTechDataUtils\ResultObject;
 use ToddMinerTech\MinerTechDataUtils\StringUtil;
 
