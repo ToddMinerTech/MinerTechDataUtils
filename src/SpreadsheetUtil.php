@@ -11,9 +11,8 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
  * Class SpreadsheetUtil
  *
  * This class includes wrappers for the PHPOffice/PhpSpreadsheet project to facilitate working with spreadsheet data
- * https://github.com/PHPOffice/PhpSpreadsheet
- * 
- * IMPROVEMENT: swap out for box/spout for reduced memory+increased performance http://opensource.box.com/spout/getting-started/
+ * https://github.com/PHPOffice/PhpSpreadsheet.
+ * Planning swap out for box/spout for reduced memory+increased performance http://opensource.box.com/spout/getting-started/
  *
  * @package ToddMinerTech\MinerTechDataUtils
  */
